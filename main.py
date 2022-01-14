@@ -31,7 +31,8 @@ def vectorizeText():
         except KeyError:
             if not token == '':
                 res[token] = 1
-    return render_template('table.html', items=res.items(), unique=len(res.keys()), total=len(text.split(' ')))
+    items = sorted(res.items(), key=lambda x: x[1], reverse=True)
+    return render_template('table.html', items=items, unique=len(items), total=len(text.split(' ')))
 
 
 if __name__ == "__main__":
